@@ -24,3 +24,8 @@ Run server.
 ```bash
 python main.py
 ```
+
+Run tests.
+```bash
+python manage.py test
+```

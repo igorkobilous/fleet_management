@@ -1,6 +1,6 @@
 
-class Configuration(object):
-    DEBUG = True
+class BaseConfig(object):
+    DEBUG = False
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     try:
@@ -8,3 +8,18 @@ class Configuration(object):
             SQLALCHEMY_DATABASE_URI
     except ImportError:
         pass
+
+
+class DevelopmentConfig(BaseConfig):
+    DEBUG = True
+
+
+class ProductionConfig(BaseConfig):
+    DEBUG = False
+
+
+class TestingConfig(BaseConfig):
+    DEBUG = True
+    TESTING = True
+    WTF_CSRF_ENABLED = True
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///:memory:'

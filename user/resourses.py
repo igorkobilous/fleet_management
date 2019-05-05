@@ -129,7 +129,7 @@ class UserResource(Resource):
         except IntegrityError as e:
             unique_regex = get_unique_regex_from_error(str(e.orig))
             if unique_regex:
-                abort(400, message={"name": "Object with this email already exist"})
+                abort(400, message={"email": "Object with this email already exist"})
             else:
                 raise
         else:
